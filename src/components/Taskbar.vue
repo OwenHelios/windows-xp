@@ -1,8 +1,100 @@
 <template>
   <div class="taskbar">
-    <div class="start">
+    <div ref="start" @click="toggleMenu" class="start">
       <img :src="require('../assets/StartButtonIcon.png')" alt="" />
       <a>start</a>
+    </div>
+    <div v-if="menuShow" class="start-menu">
+      <div class="header"><img src="" alt="" /><span>John Doe</span></div>
+      <div class="menu-content">
+        <div class="content-left">
+          <div class="tab">
+            <img src="" alt="" />
+            <div class="info">
+              <span class="title">Internet</span>
+              <span class="desc">Internet Explorer</span>
+            </div>
+          </div>
+          <div class="tab">
+            <img src="" alt="" />
+            <div class="info">
+              <span class="title">E-mail</span>
+              <span class="desc">Outlook Express</span>
+            </div>
+          </div>
+          <ul>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span>MSN Explorer</span>
+            </li>
+          </ul>
+        </div>
+        <div class="content-right">
+          <ul>
+            <li class="tab">
+              <img src="" alt="" />
+              <span class="title">My Documents</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span class="title">My Recent Documents</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span class="title">My Pictures</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span class="title">My Music</span>
+            </li>
+            <li class="tab">
+              <img src="" alt="" />
+              <span class="title">My Computer</span>
+            </li>
+          </ul>
+          <div class="tab">
+            <img src="" alt="" />
+            <span class="desc">Control Panel</span>
+          </div>
+          <div class="tab">
+            <img src="" alt="" />
+            <span class="desc">Control Panel</span>
+          </div>
+          <div class="tab">
+            <img src="" alt="" />
+            <span class="desc">Control Panel</span>
+          </div>
+          <div class="tab">
+            <img src="" alt="" />
+            <span class="desc">Control Panel</span>
+          </div>
+          <div class="tab">
+            <img src="" alt="" />
+            <span class="desc">Control Panel</span>
+          </div>
+        </div>
+      </div>
+      <div class="system-buttons"></div>
     </div>
     <div class="quick-start"></div>
     <div class="tasks"></div>
@@ -25,7 +117,14 @@ export default {
       date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
     return {
       time,
+      menuShow: true,
     }
+  },
+  methods: {
+    toggleMenu() {
+      this.menuShow = !this.menuShow
+      this.$refs.start.classList.toggle('menu-open')
+    },
   },
 }
 </script>
@@ -58,9 +157,8 @@ export default {
   color: #fff;
   text-shadow: 1px 1px 3px rgb(69 76 16), 0px 0px 3px rgb(69 76 16);
   padding: 5px 18px 5px 8px;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 10px;
-  box-shadow: inset -2px 0 0px #333;
+  border-radius: 0 8px 8px 0 / 0 18px 18px 0;
+  box-shadow: inset -1px 0 0px #333;
   background: linear-gradient(
     to bottom,
     #379237 0%,
@@ -71,12 +169,62 @@ export default {
   );
   cursor: default;
   user-select: none;
-}
-
-.start:hover {
   filter: brightness(1.2);
 }
 
+.start:hover,
+.start.menu-open {
+  filter: brightness(0.9);
+}
+
+.start-menu {
+  position: absolute;
+  width: 270px;
+  height: 450px;
+  background-color: #1398ed;
+  bottom: 30px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px 5px 0 0;
+  background: linear-gradient(
+    0deg,
+    #0e5ecc 0%,
+    #428ae3 15%,
+    #448fea 85%,
+    #1162cc 98%,
+    #0e5ecc 100%
+  );
+  font-size: 13px;
+  box-shadow: inset 0 2px 1px #c7def8;
+}
+
+.start-menu .header {
+  color: #fff;
+  min-height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  text-shadow: 1px 2px #333;
+}
+
+.menu-content {
+  display: flex;
+  background: #fff;
+  margin: 0 2px;
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, #fff 5%, #f88a24 50%, #fff 95%) 100 10;
+}
+
+.content-left {
+  border-right: 2px solid #95bdee;
+}
+
+.content-right {
+  background: #d3e5fa;
+  color: #0a246a;
+}
 .notif {
   display: flex;
   align-items: center;
