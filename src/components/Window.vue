@@ -42,6 +42,7 @@
             <img src="" alt="" />
             Go
           </button>
+          <div>go</div>
         </div>
       </div>
     </div>

@@ -1,131 +1,147 @@
 <template>
   <div class="taskbar">
-    <div ref="start" @click="toggleMenu" class="start">
-      <img :src="require('../assets/StartButtonIcon.png')" alt="" />
-      <a>start</a>
-    </div>
-    <div v-if="menuShow" class="start-menu">
-      <div class="header"><img src="" alt="" /><span>John Doe</span></div>
-      <div class="menu-content">
-        <div class="content-left">
-          <div class="tab">
-            <img src="" alt="" />
-            <div class="info">
-              <span class="title">Internet</span>
-              <span class="desc">Internet Explorer</span>
+    <div ref="start" class="start" :class="{ 'menu-open': menuShow }">
+      <button class="start-btn">
+        <img :src="require('../assets/StartButtonIcon.png')" alt="" />
+        <span>start</span>
+      </button>
+      <div v-if="menuShow" class="start-menu">
+        <div class="header"><img src="" alt="" /><span>John Doe</span></div>
+        <div class="menu-content">
+          <div class="content-left">
+            <div class="tab">
+              <img src="" alt="" />
+              <div class="info">
+                <span class="title">Internet</span>
+                <span class="desc">Internet Explorer</span>
+              </div>
+            </div>
+            <div class="tab">
+              <img src="" alt="" />
+              <div class="info">
+                <span class="title">E-mail</span>
+                <span class="desc">Outlook Express</span>
+              </div>
+            </div>
+            <ul>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span>MSN Explorer</span>
+              </li>
+            </ul>
+          </div>
+          <div class="content-right">
+            <ul>
+              <li class="tab">
+                <img src="" alt="" />
+                <span class="title">My Documents</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span class="title">My Recent Documents</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span class="title">My Pictures</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span class="title">My Music</span>
+              </li>
+              <li class="tab">
+                <img src="" alt="" />
+                <span class="title">My Computer</span>
+              </li>
+            </ul>
+            <div class="tab">
+              <img src="" alt="" />
+              <span class="desc">Control Panel</span>
+            </div>
+            <div class="tab">
+              <img src="" alt="" />
+              <span class="desc">Control Panel</span>
+            </div>
+            <div class="tab">
+              <img src="" alt="" />
+              <span class="desc">Control Panel</span>
+            </div>
+            <div class="tab">
+              <img src="" alt="" />
+              <span class="desc">Control Panel</span>
+            </div>
+            <div class="tab">
+              <img src="" alt="" />
+              <span class="desc">Control Panel</span>
             </div>
           </div>
-          <div class="tab">
-            <img src="" alt="" />
-            <div class="info">
-              <span class="title">E-mail</span>
-              <span class="desc">Outlook Express</span>
-            </div>
-          </div>
-          <ul>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span>MSN Explorer</span>
-            </li>
-          </ul>
         </div>
-        <div class="content-right">
-          <ul>
-            <li class="tab">
-              <img src="" alt="" />
-              <span class="title">My Documents</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span class="title">My Recent Documents</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span class="title">My Pictures</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span class="title">My Music</span>
-            </li>
-            <li class="tab">
-              <img src="" alt="" />
-              <span class="title">My Computer</span>
-            </li>
-          </ul>
-          <div class="tab">
-            <img src="" alt="" />
-            <span class="desc">Control Panel</span>
-          </div>
-          <div class="tab">
-            <img src="" alt="" />
-            <span class="desc">Control Panel</span>
-          </div>
-          <div class="tab">
-            <img src="" alt="" />
-            <span class="desc">Control Panel</span>
-          </div>
-          <div class="tab">
-            <img src="" alt="" />
-            <span class="desc">Control Panel</span>
-          </div>
-          <div class="tab">
-            <img src="" alt="" />
-            <span class="desc">Control Panel</span>
-          </div>
-        </div>
+        <div class="system-buttons"></div>
       </div>
-      <div class="system-buttons"></div>
     </div>
     <div class="quick-start"></div>
     <div class="tasks"></div>
     <div class="notif">
-      <div class="time">{{ time }}</div>
+      <span class="time">{{ time }}</span>
+      <span class="date">{{ date }}</span>
     </div>
   </div>
 </template>
 
 <script>
-const date = new Date()
-
 export default {
   name: 'Taskbar',
   props: {
-    msg: String,
+    menuShow: Boolean,
   },
   data() {
-    var time =
-      date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds()
     return {
-      time,
-      menuShow: true,
+      time: null,
+      date: null,
+      interval: null,
     }
   },
-  methods: {
-    toggleMenu() {
-      this.menuShow = !this.menuShow
-      this.$refs.start.classList.toggle('menu-open')
-    },
+  beforeDestroy() {
+    clearInterval(this.interval)
   },
+  mounted() {
+    //每秒更新一次时间
+    this.interval = setInterval(() => {
+      this.time = Intl.DateTimeFormat('zh-CN', {
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+      }).format()
+      this.date = Intl.DateTimeFormat('zh-CN', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })
+        .format()
+        .replace('星', '\n星')
+    }, 1000)
+  },
+  methods: {},
 }
 </script>
 
@@ -147,16 +163,17 @@ export default {
     #245edb 92%,
     #333 100%
   );
+  user-select: none;
 }
 
-.start {
+.start-btn {
   display: flex;
   font-family: Franklin Gothic;
   font-size: 19px;
   font-style: italic;
   color: #fff;
   text-shadow: 1px 1px 3px rgb(69 76 16), 0px 0px 3px rgb(69 76 16);
-  padding: 5px 18px 5px 8px;
+  padding: 4.5px 18px 4.5px 8px;
   border-radius: 0 8px 8px 0 / 0 18px 18px 0;
   box-shadow: inset -1px 0 0px #333;
   background: linear-gradient(
@@ -168,12 +185,11 @@ export default {
     #333 100%
   );
   cursor: default;
-  user-select: none;
   filter: brightness(1.2);
 }
 
-.start:hover,
-.start.menu-open {
+.start-btn:hover,
+.start.menu-open .start-btn {
   filter: brightness(0.9);
 }
 
@@ -242,5 +258,20 @@ export default {
     #333 100%
   );
   box-shadow: inset 1px 0 2px #333;
+}
+
+.notif .date {
+  font-size: 12px;
+  position: absolute;
+  bottom: 32px;
+  right: 1px;
+  background-color: #fff;
+  color: #000;
+  white-space: pre;
+  visibility: hidden;
+}
+
+.notif .time:hover + .date {
+  visibility: visible;
 }
 </style>

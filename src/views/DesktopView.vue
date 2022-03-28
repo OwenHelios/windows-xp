@@ -1,12 +1,12 @@
 <template>
-  <div class="home" @dragover="handleDrag">
+  <div @click="handleClick" class="home" @dragover="handleDrag">
     <div class="home-screen">
       <Window
         @dragstart="handleDragStart"
         :style="{ top: top + 'px', left: left + 'px' }"
       />
     </div>
-    <Taskbar msg="Welcome to Your Vue.js App" />
+    <Taskbar ref="taskbar" :menu-show="menuOpen" />
   </div>
 </template>
 
@@ -23,10 +23,11 @@ export default {
   },
   data() {
     return {
-      left: 200,
+      left: 50,
       top: 50,
       offsetX: 0,
       offsetY: 0,
+      menuOpen: false,
     }
   },
   methods: {
@@ -42,14 +43,25 @@ export default {
       this.offsetY = e.layerY
       this.offsetX = e.layerX
     },
+    handleClick(e) {
+      const startIsClicked = this.$refs.taskbar.$refs.start.contains(e.target)
+      if (!this.menuOpen) {
+        if (startIsClicked) {
+          this.menuOpen = true
+        }
+        return
+      } else if (!startIsClicked) {
+        this.menuOpen = false
+      }
+    },
   },
 }
 </script>
 
 <style>
 .home {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: url('../assets/wallpaper.jpg');
   background-size: cover;
   position: relative;
