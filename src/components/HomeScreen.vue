@@ -15,7 +15,7 @@
       </drag-select>
     </div> -->
     <ul
-      v-if="menuShow"
+      v-if="contextMenuOpen"
       class="context-menu"
       ref="contextMenu"
       :style="{ top: menuTop + 'px', left: menuLeft + 'px' }"
@@ -33,6 +33,8 @@
 // @ is an alias to /src
 import Window from '@/components/Window.vue'
 import DragSelect from 'drag-select-vue'
+import { mapWritableState } from 'pinia'
+import { useStore } from '@/store'
 
 export default {
   name: 'HomeScreen',
@@ -49,7 +51,6 @@ export default {
       offsetY: 0,
       menuLeft: 0,
       menuTop: 0,
-      menuShow: false,
     }
   },
   methods: {
@@ -77,13 +78,16 @@ export default {
       } else {
         this.menuTop = e.clientY
       }
-      this.menuShow = true
+      this.contextMenuOpen = true
     },
     handleClick(e) {
-      if (this.menuShow) {
-        this.menuShow = false
+      if (this.contextMenuOpen) {
+        this.contextMenuOpen = false
       }
     },
+  },
+  computed: {
+    ...mapWritableState(useStore, ['contextMenuOpen']),
   },
 }
 </script>
