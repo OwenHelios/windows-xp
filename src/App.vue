@@ -18,6 +18,8 @@ body {
 }
 a {
   text-decoration: none;
+  color: inherit;
+  cursor: default;
 }
 li {
   list-style: none;

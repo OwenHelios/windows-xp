@@ -1,5 +1,5 @@
 <template>
-  <div class="taskbar">
+  <div class="taskbar" @contextmenu="handleRightClick">
     <div ref="start" class="start" :class="{ 'menu-open': menuShow }">
       <button class="start-btn">
         <img :src="require('../assets/StartButtonIcon.png')" alt="" />
@@ -141,7 +141,11 @@ export default {
         .replace('星', '\n星')
     }, 1000)
   },
-  methods: {},
+  methods: {
+    handleRightClick(e) {
+      e.preventDefault()
+    },
+  },
 }
 </script>
 

@@ -46,6 +46,14 @@
         </div>
       </div>
     </div>
+    <div class="content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex dolores quasi
+      non quam architecto dolore eum laboriosam soluta quisquam impedit quo
+      voluptates, exercitationem, placeat nam temporibus repudiandae nisi quos
+      ab perferendis hic fugit cumque? Doloremque sapiente neque aliquam eius
+      modi architecto harum rem, ipsam commodi? Facilis in voluptas
+      reprehenderit numquam.
+    </div>
   </div>
 </template>
 
@@ -56,6 +64,7 @@ export default {
     top: Number,
     left: Number,
   },
+  methods: {},
 }
 </script>
 
@@ -233,5 +242,11 @@ export default {
   box-shadow: inset 0 1.4px rgba(255, 255, 255, 0.8),
     inset 0 -1.6px rgba(0, 0, 0, 0.2);
   height: 50px;
+}
+
+.content {
+  max-height: 340px;
+  font-size: 30px;
+  overflow: auto;
 }
 </style>
