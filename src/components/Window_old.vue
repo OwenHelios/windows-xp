@@ -1,62 +1,59 @@
 <template>
-  <div class="wrapper window">
-    <div draggable="true" class="topBar title-bar">
-      <div class="label title-bar-text">
-        <img :src="require('../assets/folder-empty.png')" alt="" />
-        <span>Window</span>
-      </div>
-      <div class="control title-bar-controls">
-        <button class="minimize" aria-label="Minimize"></button>
-        <button class="maximize" aria-label="Maximize"></button>
-        <button class="close" aria-label="Close"></button>
-      </div>
-    </div>
-    <div class="window-body">
-      <div class="header">
-        <div class="menuBar">
-          <div class="menuTop">
-            <ul>
-              <li>File</li>
-              <li>Edit</li>
-              <li>View</li>
-              <li>Favorites</li>
-              <li>Tools</li>
-              <li>Help</li>
-            </ul>
-          </div>
-          <div class="menuBottom">
-            <div class="arrows">
-              <div class="arrowBack">
-                <img src="" alt="" />
-                <span>Back</span>
-              </div>
-              <div class="arrowNext">
-                <img src="" alt="" />
-              </div>
-            </div>
-            <div class="search"></div>
-          </div>
-          <div class="addressBar">
-            <span>Address</span>
-            <input type="text" />
-            <button>
-              <img src="" alt="" />
-              Go
-            </button>
-            <div>go</div>
-          </div>
+  <div class="wrapper">
+    <div class="header">
+      <div draggable="true" class="topBar">
+        <div class="label">
+          <img :src="require('../assets/folder-empty.png')" alt="" />
+          <span>Window</span>
+        </div>
+        <div class="control">
+          <button class="minimize"></button>
+          <button class="maximize"></button>
+          <button class="close"></button>
         </div>
       </div>
-      <div class="content">
-        <input type="text" v-model="testing" />
-        <p>{{ testing }}</p>
+      <div class="menuBar">
+        <div class="menuTop">
+          <ul>
+            <li>File</li>
+            <li>Edit</li>
+            <li>View</li>
+            <li>Favorites</li>
+            <li>Tools</li>
+            <li>Help</li>
+          </ul>
+        </div>
+        <div class="menuBottom">
+          <div class="arrows">
+            <div class="arrowBack">
+              <img src="" alt="" />
+              <span>Back</span>
+            </div>
+            <div class="arrowNext">
+              <img src="" alt="" />
+            </div>
+          </div>
+          <div class="search"></div>
+        </div>
+        <div class="addressBar">
+          <span>Address</span>
+          <input type="text" />
+          <button>
+            <img src="" alt="" />
+            Go
+          </button>
+          <div>go</div>
+        </div>
       </div>
+    </div>
+    <div class="content">
+      <input type="text" v-model="testing" />
+      <p>{{ testing }}</p>
     </div>
   </div>
 </template>
 
 <script>
-import 'xp.css/dist/XP.css'
 export default {
   name: 'Window',
   props: {
@@ -76,7 +73,7 @@ export default {
 <style scoped>
 .wrapper {
   width: 400px;
-  /* height: 500px;
+  height: 500px;
   background-color: #fff;
   border-radius: 5px;
   -webkit-user-select: none;
@@ -84,9 +81,9 @@ export default {
   -ms-user-select: none;
   user-select: none;
   font-size: 14px;
-  position: absolute; */
+  position: absolute;
 }
-/* .wrapper .header .topBar {
+.wrapper .header .topBar {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,8 +113,8 @@ export default {
   );
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-} */
-/* .wrapper .header .topBar .label {
+}
+.wrapper .header .topBar .label {
   height: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -125,17 +122,17 @@ export default {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-} */
-.wrapper .topBar .label img {
+}
+.wrapper .header .topBar .label img {
   width: 20px;
   margin-right: 5px;
 }
-/* .wrapper .header .topBar .label span {
+.wrapper .header .topBar .label span {
   font-size: 15px;
   font-weight: bold;
   color: #fff;
-} */
-/* .wrapper .header .topBar .control button {
+}
+.wrapper .header .topBar .control button {
   position: relative;
   border: 1px solid #fff;
   border-radius: 2px;
@@ -207,7 +204,7 @@ export default {
   background-color: #fff;
   -webkit-transform: translate(-50%, -50%) rotate(45deg);
   transform: translate(-50%, -50%) rotate(45deg);
-} */
+}
 .wrapper .header .menuBar {
   display: -webkit-box;
   display: -ms-flexbox;
